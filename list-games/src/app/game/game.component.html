@@ -1,4 +1,18 @@
-<div *ngFor="let game of gamesList">
-    <img src="{{game.background_image}}" alt="{{game.name}}'s image">
-    {{game.id}} - {{game.name}} - {{game.released}}
+<div class="container">
+  <h1>LIST OF GAMES</h1>
+  <div class="container card-container">
+    <!-- Show every game on the game list -->
+    <div *ngFor="let game of gamesList">
+      <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{{game.background_image}}" alt="{{game.name}}'s image">
+          <div class="card-body">
+            <!-- Cut the name if it's too long -->
+            <h5 class="card-title">{{game.name.length > 25? (game.name|slice: 0:25)+"..." : (game.name)}}</h5>
+            <p class="card-text">{{game.released}}</p>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
+

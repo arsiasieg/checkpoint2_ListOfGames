@@ -16,9 +16,8 @@ export class GameListComponent implements OnInit {
   ngOnInit(): void {
     this.gameService.getApi().subscribe(games =>{
       this.games = games
-      
+      console.log(games)
     })
-    console.log(this.games)
   }
 
 }
