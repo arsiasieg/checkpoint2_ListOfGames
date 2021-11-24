@@ -21,6 +21,5 @@ export class GameComponent implements OnInit {
   //Retrieve the game by their genres
   showSelectValue(genre:any){
     this.gamesList = this.gameService.selectByGenre(genre)
-    console.log(this.gamesList)
   }
 }

@@ -17,7 +17,6 @@ export class GameListComponent implements OnInit {
     //Retrieve the games list
     this.gameService.getApi().subscribe(gamesList =>{
       this.games = gamesList
-      console.log(this.games)
     })
   }
 

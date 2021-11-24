@@ -26,7 +26,10 @@ export class GameService{
     if(genreSelect ==="All"){
       return this.allGames
     } else {
-      return this.allGames.filter(game => game.genres[0].name === genreSelect)
+      return this.allGames.filter(game => {
+        for (let i=0; i < game.genres.length; i++){
+        }
+      })
     }
   }
 }
