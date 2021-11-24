@@ -6,11 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GameService{
-
   allGames: any[]
+  gamesByGenre: any[]
 
   constructor(private http: HttpClient) {
     this.allGames = []
+    this.gamesByGenre = []
     this.getApi().subscribe (games =>{
       this.allGames = games
     })
@@ -26,10 +27,15 @@ export class GameService{
     if(genreSelect ==="All"){
       return this.allGames
     } else {
-      return this.allGames.filter(game => {
-        for (let i=0; i < game.genres.length; i++){
-        }
+      this.gamesByGenre = []
+      this.allGames.filter(game => {
+        game.genres.forEach((genre:any) =>{
+          if (genre.name === genreSelect){
+            this.gamesByGenre.push(game)
+          }
+        })
       })
+      return this.gamesByGenre
     }
   }
 }
