@@ -1,5 +1,24 @@
 <div class="container">
   <h1>LIST OF GAMES</h1>
+
+  <!-- Select genre -->
+  <div class="selector">
+    <p>Select your genre</p>
+    <select class="form-select mt-4 mb-4" name="genres" id="genres" [(ngModel)]="selectValue">
+      <option value="All">All</option>
+      <option value="Action">Action</option>
+      <option value="Adventure">Adventure</option>
+      <option value="Indie">Indie</option>
+      <option value="MMO">Massively Multiplayer</option>
+      <option value="Platformer">Platformer</option>
+      <option value="Puzzle">Puzzle</option>
+      <option value="RPG">RPG</option>
+      <option value="Shooter">Shooter</option>
+    </select>
+    <button (click)="showSelectValue(selectValue)" class="btn btn-primary">Confirm</button>
+  </div>
+
+
   <div class="container card-container">
     <!-- Show every game on the game list -->
     <div *ngFor="let game of gamesList">
@@ -8,8 +27,10 @@
           <div class="card-body">
             <!-- Cut the name if it's too long -->
             <h5 class="card-title">{{game.name.length > 25? (game.name|slice: 0:25)+"..." : (game.name)}}</h5>
-            <p class="card-text">{{game.released}}</p>
-            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            <p class="card-text">{{game.released | date: 'dd/MM/YYYY'}}</p>
+            <div class="displayFlex">
+              <p *ngFor="let genre of game.genres" class="card-text">{{genre.name}} </p>
+            </div>
           </div>
         </div>
     </div>

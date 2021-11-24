@@ -7,16 +7,17 @@ import { GameService } from '../shared/services/game.service';
   styleUrls: ['./game-list.component.css']
 })
 export class GameListComponent implements OnInit {
-  games: any[]
+  games: object[]
 
   constructor(private gameService: GameService) {
     this.games = []
-   }
+  }
 
   ngOnInit(): void {
-    this.gameService.getApi().subscribe(games =>{
-      this.games = games
-      console.log(games)
+    //Retrieve the games list
+    this.gameService.getApi().subscribe(gamesList =>{
+      this.games = gamesList
+      console.log(this.games)
     })
   }
 
